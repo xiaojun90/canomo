@@ -8,21 +8,28 @@
     <title>Document</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
     <style>
-        #reader {
-            width: 300px;
+        #reader,
+        #result {
             margin: auto;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
 
         }
     </style>
 </head>
 
 <body>
-    <div style="width: 200px" id="reader"></div>
+    <div id="reader"></div>
+    <div id="result">
+        扫码结果：<p id="result-p"></p>
+    </div>
     <script>
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
             console.log(`Scan result: ${decodedText}`, decodedResult);
-            //html5QrcodeScanner.pause();
+            html5QrcodeScanner.pause();
+            document.getElementById("result-p").innerHTML = decodedText;
         }
 
         function onScanFailure(error) {
@@ -33,7 +40,7 @@
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "reader", { fps: 10, qrbox: 250 });
-        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        html5QrcodeScanner.render(onScanSuccess);
     </script>
 </body>
 
