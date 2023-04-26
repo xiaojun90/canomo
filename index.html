@@ -22,7 +22,8 @@
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
             console.log(`Scan result: ${decodedText}`, decodedResult);
-            //html5QrcodeScanner.pause();
+            html5QrcodeScanner.pause();
+            alert(decodedText);
         }
 
         function onScanFailure(error) {
